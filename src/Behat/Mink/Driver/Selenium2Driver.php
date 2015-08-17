@@ -144,6 +144,14 @@ class Selenium2Driver extends CoreDriver
 
             unset($desiredCapabilities['chrome']);
         }
+        
+        if (isset($desiredCapabilities['browserstack'])) {
+            foreach ($desiredCapabilities['browserstack'] as $name => $cap) {
+                $desiredCapabilities['browserstack.' . $name] = $cap;
+            }
+        
+            unset($desiredCapabilities['browserstack']);
+        }
 
         $this->desiredCapabilities = $desiredCapabilities;
     }
